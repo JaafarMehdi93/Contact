@@ -1,0 +1,24 @@
+# Build
+build/
+dist/
+
+# dependencies
+/node_modules
+
+# misc
+.DS_STORE
+
+# .env
+.env.dev
+.env.prod
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# webstorm
+.idea/
+*.iml
+
+# CSS
+src/**/*.css
