@@ -1,20 +1,23 @@
-export const STARTUP = 'STARTUP'
-export const STARTUP_SUCCESS = 'STARTUP_SUCCESS'
-export const STARTUP_FAILURE = 'STARTUP_FAILURE'
+export const CONTACT = 'CONTACT'
+export const CONTACT_SUCCESS = 'CONTACT_SUCCESS'
+export const CONTACT_FAILURE = 'CONTACT_FAILURE'
 
-export const startup = () => ({
-	type: STARTUP,
-})
-
-export const startupSuccess = data => ({
-	type: STARTUP_SUCCESS,
+export const contact = data => ({
+	type: CONTACT,
 	payload: {
 		data,
 	},
 })
 
-export const startupFailure = error => ({
-	type: STARTUP_FAILURE,
+export const contactSuccess = response => ({
+	type: CONTACT_SUCCESS,
+	payload: {
+		response,
+	},
+})
+
+export const contactFailure = error => ({
+	type: CONTACT_FAILURE,
 	payload: {
 		error,
 	},

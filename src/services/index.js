@@ -1,24 +1,13 @@
-export const fetchUserService = async username => {
-	try {
-		const response = await fetch(`https://api.bitbucket.org/2.0/users/${username}`)
-		if (response.ok) {
-			return response.json()
-		} else {
-			throw new Error('An error occurred during user fetching')
-		}
-	} catch (error) {
-		throw error
-	}
-}
 
-export const fetchRepositoriesService = async url => {
+
+export const fetchService = async (url, methode = 'GET' , data ) => {
 	try {
-		const response = await fetch(url)
+		const response = await fetch(url, methode, data)
 		if (response.ok) {
 			const json = await response.json()
-			return json.values.slice(0, 5)
+			return response.json()
 		} else {
-			throw new Error('An error occurred during repositories fetching')
+			throw new Error(`Somtong wrong with url ${url}  status: ${response.status}`)
 		}
 	} catch (error) {
 		throw error

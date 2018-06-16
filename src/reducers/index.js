@@ -1,18 +1,19 @@
-import { STARTUP, STARTUP_FAILURE, STARTUP_SUCCESS } from '../actions'
+import { CONTACT, CONTACT_FAILURE, CONTACT_SUCCESS } from '../actions'
 
 const initialState = {
 	error: null,
-	data: null
+	data: null,
+	response: null
 }
 
 export default (state = initialState, action) => {
 	switch (action.type) {
-		case STARTUP:
-			return { ...state, data: null }
-		case STARTUP_SUCCESS:
-			return { ...state, data: action.payload.data }
-		case STARTUP_FAILURE:
-			return { ...state, error: action.payload.error }
+		case CONTACT:
+			return { ...state, data: action.payload.data, response: false }
+		case CONTACT_SUCCESS:
+			return { ...state, response: true }
+		case CONTACT_FAILURE:
+			return { ...state, error: action.payload.error, response: false }
 		default:
 			return state
 	}

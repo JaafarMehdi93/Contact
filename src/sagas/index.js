@@ -1,16 +1,17 @@
-import { put, takeLatest } from 'redux-saga/effects'
-import { STARTUP, startupFailure, startupSuccess } from '../actions'
-
-function* startupSaga() {
+import { put, takeLatest, call } from 'redux-saga/effects'
+import { CONTACT, contactFailure, contactSuccess } from '../actions'
+import { fetchService } from '../services/index'
+function* contactSaga({ payload }) {
 	try {
-		yield put(startupSuccess([1, 2, 3]))
+		// let response = yield call(fetchService, process.env.SERVER_URL, 'POST',  payload.data)
+		yield put(contactSuccess())
 	} catch (error) {
-		yield put(startupFailure(error.message))
+		yield put(contactFailure(error.message))
 	}
 }
 
 function* watchStartup() {
-	yield takeLatest(STARTUP, startupSaga)
+	yield takeLatest(CONTACT, contactSaga)
 }
 
 export default watchStartup
