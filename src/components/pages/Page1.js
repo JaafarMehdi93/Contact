@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { startup } from '../../actions'
 import './__styles__/Page1.css'
-
+import ContactForm from '../contactForm/ContactForm'
 
 class Page1 extends Component {
 	componentDidMount() {
@@ -18,6 +18,7 @@ class Page1 extends Component {
 		return (
 			
 			<div className="Page1">
+				<ContactForm/>
 			</div>
 		)
 	}

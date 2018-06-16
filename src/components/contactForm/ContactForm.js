@@ -4,23 +4,8 @@ import { Link } from 'react-router-dom'
 import { startup } from '../../actions'
 import PropTypes from 'prop-types'
 import './__styles__/ContactForm.css'
-import { contactForm } from '../../assets/label.json'
+import { contactForm } from '../../assets/labels.json'
 
-const ExampleForm = () => (
-  <Form render={({
-    submitForm
-  }) => (
-    <form onSubmit={submitForm}>
-	<div>
-     <Text field="firstName"  placeholder='First Name' /></div>
-     <div> <Text field="lastName" placeholder='Last Name' /></div>
-	 	<div> <Text field="Email" placeholder='Email' /></div>
-     <div> <TextArea field="Description" placeholder='Description'/></div>
-     <div> <Checkbox field="agreesToTerms" /></div>
-      <button type="submit">Submit</button>
-    </form>
-  )} />
-)
 
 class ContactForm extends Component {
 	constructor(props) {
@@ -32,18 +17,21 @@ class ContactForm extends Component {
 			message:''
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value});
-  }
+		let target = event.target
+    let value = target.value
+    let name = target.name
+		this.setState({
+      [name]: value
+    });  }
 
-  handleSubmit(values) {
+  handleSubmit() {
 		const { onSubmit } = this.props
-		onSubmit(values)
-    event.preventDefault();
+		console.log(this.state)
   }
 
   render() {
@@ -52,19 +40,19 @@ class ContactForm extends Component {
       <form onSubmit={this.handleSubmit}>
 				<label>
           {contactForm.firstName}
-          <input type="text" value={this.state.firstName} onChange={this.handleChange} />
+          <input type="text" name={"firstName"} value={this.state.firstName}  onChange={this.handleChange} />
         </label>
         <label>
 					{contactForm.lastName}        
-          <input type="text" value={this.state.lastName} onChange={this.handleChange} />
+          <input type="text" name={"lastName"} value={this.state.lastName} onChange={this.handleChange}  />
         </label>
         <label>
 					{contactForm.email}       	
-          <input type="text" value={this.state.email} onChange={this.handleChange} />
+          <input type="text" name={"email"} value={this.state.email} onChange={this.handleChange}  />
         </label>
         <label>
 					{contactForm.message}         
-          <textarea value={this.state.message} onChange={this.handleChange} />
+          <textarea name={"message"} value={this.state.message} onChange={this.handleChange}  />
         </label>
         <input type="submit" value="Submit" />
       </form>
@@ -73,7 +61,7 @@ class ContactForm extends Component {
 
 }
 ContactForm.PropTypes = {
-	onSubmit : PropTypes.function.isRequired,
+	onSubmit : PropTypes.any.isRequired,
 	formTitle : PropTypes.string
 }
 
