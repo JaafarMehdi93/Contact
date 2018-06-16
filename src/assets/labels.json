@@ -1,0 +1,8 @@
+{
+    "contactForm":{
+        "firstName":"Nom :",
+        "lastName":"Prénom :",
+        "email":"Email :",
+        "message":"Message :"
+    }
+}
