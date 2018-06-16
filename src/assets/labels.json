@@ -3,6 +3,7 @@
         "firstName":"Nom :",
         "lastName":"Prénom :",
         "email":"Email :",
-        "message":"Message :"
+        "message":"Message :",
+        "success": "Message envoyé !"
     }
 }

@@ -14,7 +14,11 @@ class ContactForm extends Component {
 			firstName:'',
 			lastName:'',
 			email:'',
-			message:''
+      message:'',
+      errors : {
+        lastName:false,
+        firstName:false
+      }
     };
 
     this.handleChange = this.handleChange.bind(this)
@@ -27,28 +31,55 @@ class ContactForm extends Component {
     let name = target.name
 		this.setState({
       [name]: value
-    });  }
+    });  
+  }
+  validate (input) {
+    let { firstName, lastName } = this.state
+    return {
+      firstName: firstName.length === 0,
+      lastName: lastName.length === 0,
+    };
+  }
 
-  handleSubmit() {
-		const { onSubmit } = this.props
-		console.log(this.state)
+  handleSubmit(e) {
+    const { onSubmit } = this.props
+    let data = this.state
+    e.preventDefault();
+    e.stopPropagation();
+    let errors = this.validate (data)
+    console.log(errors)
+    if (!errors.lastName && !errors.firstName) {
+      onSubmit(data)
+      this.setState({
+        firstName:'',
+        lastName:'',
+        email:'',
+        message:''
+    });  
+    } else {
+      this.setState({
+      errors
+      })
+    }
+
+    
   }
 
   render() {
-
+    let { errors } = this.state
     return (
       <form onSubmit={this.handleSubmit}>
 				<label>
           {contactForm.firstName}
-          <input type="text" name={"firstName"} value={this.state.firstName}  onChange={this.handleChange} />
+          <input className={errors.firstName ? "error" : ""} type="text" name={"firstName"} value={this.state.firstName}  onChange={this.handleChange} />
         </label>
         <label>
 					{contactForm.lastName}        
-          <input type="text" name={"lastName"} value={this.state.lastName} onChange={this.handleChange}  />
+          <input className={errors.lastName ? "error" : ""} type="text" name={"lastName"} value={this.state.lastName} onChange={this.handleChange}  />
         </label>
         <label>
 					{contactForm.email}       	
-          <input type="text" name={"email"} value={this.state.email} onChange={this.handleChange}  />
+          <input  type="email" name={"email"} value={this.state.email} onChange={this.handleChange}  />
         </label>
         <label>
 					{contactForm.message}         

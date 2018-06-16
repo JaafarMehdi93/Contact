@@ -14,8 +14,8 @@ class App extends Component {
 		return (
 			<Router history={history}>
 				<Fragment>
-					<header className="App-header">
-						<img src={process.env.PUBLIC_URL + '/logo.png'} className="App-logo" alt="logo" />
+					<header>
+					
 					</header>
 					<Route exact path="/" component={HomePage} />
 					<Route path="/page1" component={Page1} />

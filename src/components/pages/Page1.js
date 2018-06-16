@@ -1,33 +1,33 @@
 import React, { Component,props } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { startup } from '../../actions'
+import { contact } from '../../actions'
 import './__styles__/Page1.css'
 import ContactForm from '../contactForm/ContactForm'
+import { contactForm } from '../../assets/labels.json'
 
 class Page1 extends Component {
-	componentDidMount() {
-		const { onMount } = this.props
-		
-		onMount()
-	}
-	submitForm(fields) {
-		console.log(fields)
-	}
+
 	render() {
+		const { onSubmit } = this.props
+		const { response } = this.props
+		
 		return (
 			
 			<div className="Page1">
-				<ContactForm/>
+				{response && <div> {contactForm.success} </div>}
+				<ContactForm onSubmit={onSubmit}/>
 			</div>
 		)
 	}
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+	response : state.response
+})
 
 const mapDispatchToProps = dispatch => ({
-	onMount: () => dispatch(startup()),
+	onSubmit: (data) => dispatch(contact(data)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Page1)

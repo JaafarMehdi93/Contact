@@ -20,5 +20,3 @@ yarn-error.log*
 .idea/
 *.iml
 
-# CSS
-src/**/*.css
