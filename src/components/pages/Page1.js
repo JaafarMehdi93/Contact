@@ -17,6 +17,7 @@ class Page1 extends Component {
 			<div className="Page1">
 				{response && <div> {contactForm.success} </div>}
 				<ContactForm onSubmit={onSubmit}/>
+				<Link to="/">Prev</Link>
 			</div>
 		)
 	}

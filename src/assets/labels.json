@@ -4,6 +4,7 @@
         "lastName":"Prénom :",
         "email":"Email :",
         "message":"Message :",
-        "success": "Message envoyé !"
+        "success": "Message envoyé !",
+        "failure": "Erreur"
     }
 }

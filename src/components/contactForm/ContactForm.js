@@ -49,6 +49,7 @@ class ContactForm extends Component {
     let errors = this.validate (data)
     console.log(errors)
     if (!errors.lastName && !errors.firstName) {
+
       onSubmit(data)
       this.setState({
         firstName:'',
@@ -91,9 +92,9 @@ class ContactForm extends Component {
   }
 
 }
-ContactForm.PropTypes = {
+ContactForm.propTypes = {
 	onSubmit : PropTypes.any.isRequired,
-	formTitle : PropTypes.string
+	
 }
 
 export default (ContactForm)

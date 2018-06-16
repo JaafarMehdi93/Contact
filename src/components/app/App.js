@@ -15,10 +15,9 @@ class App extends Component {
 			<Router history={history}>
 				<Fragment>
 					<header>
-					
 					</header>
 					<Route exact path="/" component={HomePage} />
-					<Route path="/page1" component={Page1} />
+					<Route path="/Page1" component={Page1} />
 				</Fragment>
 			</Router>
 		)

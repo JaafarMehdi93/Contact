@@ -7,7 +7,7 @@ class HomePage extends Component {
 	render() {
 		return (
 			<div className="HomePage">
-				<Link to="/page1" className="HomePage-link">Next</Link>
+				<Link to="/" className="HomePage-link">Contact</Link>
 			</div>
 		)
 	}
